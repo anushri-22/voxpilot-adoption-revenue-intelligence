@@ -8,8 +8,7 @@
 
 ## Dashboard preview
 
-![VoxPilot expansion intelligence dashboard](assets/voxpilot-expansion-dashboard.png)
-
+![VoxPilot Expansion Intelligence Dashboard](assets/assets/Expansion%20dashboard.png)
 *Expansion Intelligence: three hypothetical opportunities representing £152,000 in illustrative potential ARR. These are scenarios to validate, not forecast or contracted revenue.*
 
 ## The problem
