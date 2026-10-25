@@ -1,203 +1,85 @@
-# VoxPilot — Customer Adoption & Revenue Intelligence
-
-**Snowflake SQL · Product Analytics · Customer Success · Revenue Intelligence · Interactive Dashboard**
-
-### [Explore the Live Dashboard](https://anushri-22.github.io/voxpilot-adoption-revenue-intelligence/)
-
-**Demo note:** VoxPilot is an independent portfolio analytics prototype using 25 synthetic B2B SaaS customers. It demonstrates how product telemetry can be translated into actionable customer success and commercial intelligence. All customer records, revenue figures, and opportunities are illustrative.
-
-## The Problem
-
-B2B SaaS companies already collect extensive product usage data through analytics platforms, API monitoring systems, and customer success tools.
-
-However, understanding product usage is different from knowing what action to take.
-
-A customer might experience declining API performance, reduced engagement, or low adoption across certain channels without raising a support ticket. By the time the problem becomes visible during a renewal conversation, the account may already be at risk.
-
-Equally, customers with strong product adoption may have untapped expansion potential that is not immediately obvious from standard usage reports.
-
-**The challenge is connecting technical product signals with proactive account management and commercial decisions.**
-
-## The Solution
-
-VoxPilot explores an additional intelligence layer built on top of existing product telemetry and commercial account data.
-
-Rather than replacing existing analytics, CRM, or customer success platforms, it translates their underlying signals into three questions:
-
-1. Which customers need attention before they raise an issue?
-2. What is driving adoption risk or limiting product value?
-3. Where could product usage indicate a potential expansion opportunity?
-
-The prototype uses Snowflake SQL to process synthetic customer and product usage data, classify account health, and generate rule-based recommendations.
-
-## Live Dashboard
-
-[Open VoxPilot — Customer Adoption & Revenue Intelligence](https://anushri-22.github.io/voxpilot-adoption-revenue-intelligence/)
-
-The interactive dashboard includes:
-
-- **Portfolio overview:** Total ARR, ARR associated with at-risk accounts, and accounts requiring attention.
-- **Account priority queue:** Searchable customer portfolio with health classifications and commercial context.
-- **Product adoption intelligence:** Usage changes, conversation volumes, agent success rates, and capacity utilisation.
-- **Technical performance:** API error rates and average latency.
-- **Renewal intelligence:** Upcoming renewal dates alongside account health signals.
-- **Recommended actions:** Rule-based technical reviews, adoption interventions, and commercial opportunity discovery.
-
-## Example: Detecting Customer Risk Before Renewal
-
-Consider Meridian Travel, a synthetic customer with £180,000 ARR.
-
-The dashboard identifies:
-
-| Metric | Observed signal |
-|---|---|
-| Product usage | 33.3% decline |
-| Agent goal success | 66.5% |
-| API error rate | 2.5% |
-| Average latency | 1,055 ms |
-| Account health | High Risk |
-
-Rather than waiting for the customer to report dissatisfaction, an account manager could use these signals to initiate a technical investigation.
-
-**Recommended workflow:**
-
-Investigate the technical performance issues, validate whether they explain the usage decline, coordinate remediation with engineering, and establish an adoption recovery plan before renewal.
-
-This demonstrates how product telemetry can inform proactive retention activity.
-
-The example does not claim that the intervention prevented churn; it illustrates how an earlier intervention could be prioritised.
-
-## From Product Adoption to Commercial Growth
-
-VoxPilot also explores how product usage can inform account expansion conversations.
-
-| Product signal | Potential opportunity |
-|---|---|
-| Sustained high capacity utilisation | Review whether additional capacity is needed |
-| Strong adoption in one deployment channel | Explore rollout to additional channels |
-| High agent success and growing usage | Investigate additional workflows or departments |
-| Low adoption despite contracted capacity | Prioritise enablement before proposing expansion |
-
-Expansion estimates in the prototype are illustrative sizing assumptions, not sales forecasts, booked revenue, or validated customer demand.
-
-The purpose is to help account managers identify where discovery conversations may be commercially relevant.
-
-## Technical Architecture
-
-**Data sources (synthetic)**
-
-Customer account information, contract ARR, renewal dates, deployed channels, daily usage, technical performance, and account actions.
-
-↓
-
-**Snowflake — Data & Analytics Layer**
-
-- Store customer and product usage records.
-- Aggregate usage and performance metrics.
-- Compare recent and previous activity.
-- Calculate account health indicators.
-- Apply rule-based classifications and next-best-action logic.
-
-↓
-
-**Account Intelligence View**
-
-A customer-level analytical view combining product adoption, technical performance, renewal context, and commercial signals.
-
-↓
-
-**Interactive Dashboard**
-
-A standalone HTML and JavaScript dashboard using a JSON snapshot of account intelligence.
-
-↓
-
-**Customer Success & Commercial Decisions**
-
-Prioritise technical interventions, adoption recovery, renewal preparation, and expansion discovery.
-
-## Technology Stack
-
-| Technology | Purpose |
-|---|---|
-| Snowflake | Data storage and SQL analytics |
-| SQL | Data transformations, account health classification, and commercial rules |
-| JSON | Transfer of account intelligence into the dashboard |
-| HTML, CSS, JavaScript | Interactive dashboard and customer drill-down |
-| GitHub Pages | Public hosting of the prototype |
-
-## Repository Structure
-
+VoxPilot — Customer Adoption & Revenue Intelligence
+Snowflake SQL · Product Analytics · Customer Success · Revenue Intelligence · Interactive Dashboard
+Explore the Live Dashboard · View Source on GitHub
+> **Portfolio demonstration:** VoxPilot uses 25 fictional B2B SaaS accounts and synthetic AI-agent product telemetry. Customer identities, ARR, commercial opportunities and scenario assumptions are illustrative. This is not a production system, a live Snowflake connection or qualified sales pipeline.
+Dashboard preview
+![VoxPilot expansion intelligence dashboard](assets/voxpilot-expansion-dashboard.png)
+Expansion Intelligence: three hypothetical opportunities representing £152,000 in illustrative potential ARR. These are scenarios to validate, not forecast or contracted revenue.
+The problem
+Customer-facing teams can see usage, API performance and contract information in separate systems, but it is harder to turn those signals into timely account decisions. Declining usage or technical friction may go unnoticed until a renewal conversation. Strong adoption may also suggest an opportunity for a customer discovery conversation, without proving demand for an upsell.
+What I built
+VoxPilot is a customer adoption-to-revenue intelligence prototype. It combines product telemetry with commercial context to help answer:
+Retention: Which customers need attention before renewal, and why?
+Adoption: Is technical friction or limited usage holding back customer value?
+Expansion: Which accounts merit discovery about additional capacity, teams or workflows?
+The Snowflake SQL layer creates explainable account-health and opportunity classifications. A standalone HTML/JavaScript dashboard presents exported JSON snapshots in a searchable account portfolio and customer drill-down.
+Dashboard capabilities
+Portfolio overview: Total ARR, ARR associated with flagged accounts, and number of accounts needing attention.
+Account priority queue: Search, sort and review synthetic customers by account-health and usage signals.
+Adoption and technical health: Usage change, AI-agent goal success, API error rates, latency and capacity utilisation.
+Renewal context: ARR and renewal timing alongside account-health signals.
+Recommended next actions: Rule-based suggestions for technical investigation, adoption recovery and customer discovery.
+Expansion Intelligence: A separate scenario-based view of possible capacity and workflow expansion, including illustrative ARR assumptions.
+Example: proactive retention
+Meridian Travel is a fictional £180,000 ARR account. The prototype flags a 33.3% usage decline, 66.5% agent goal success, 2.5% API error rate and 1,055 ms average latency, producing a High Risk classification.
+A plausible account-management response would be to investigate performance with technical teams, establish whether it explains the adoption decline, agree corrective actions with the customer, and monitor recovery ahead of renewal. This is a prioritisation example, not evidence that churn was prevented.
+Example: scenario-based expansion
+The current-state portfolio signals do not identify accounts that meet the original SQL-defined expansion criteria. A separate hypothetical scenario model explores what could become relevant if adoption and utilisation changed.
+Fictional account	Scenario	Illustrative potential ARR	Discovery action
+Evergreen Bank	Capacity expansion	£56,000	Validate demand for additional contracted capacity
+Beacon Telecom	Workflow expansion	£50,000	Explore additional teams, channels or AI workflows
+Horizon Airlines	Capacity expansion	£46,000	Validate demand for additional contracted capacity
+Total	3 scenarios	£152,000	Validate before treating as pipeline
+These are illustrative sizing assumptions, not customer commitments, qualified pipeline or revenue forecasts. Keeping current-state and scenario-based insights separate avoids presenting hypothetical growth as observed demand.
+Architecture
+```text
+Synthetic customer + contract + AI-agent telemetry
+                    |
+                    v
+        Snowflake database and SQL
+        - customer and usage records
+        - adoption / performance metrics
+        - account health classifications
+        - opportunity and scenario logic
+                    |
+                    v
+           JSON snapshot exports
+        - account_intelligence.json
+        - opportunity_intelligence.json
+                    |
+                    v
+     HTML / CSS / JavaScript dashboard
+              (GitHub Pages)
+                    |
+                    v
+    Retention prioritisation and expansion discovery
+```
+Technology: Snowflake, SQL, JSON, HTML, CSS, JavaScript and GitHub Pages. The public dashboard loads static JSON files; it does not query Snowflake or any external CRM in real time.
+Repository structure
 ```text
 voxpilot-adoption-revenue-intelligence/
-│
 ├── index.html
 ├── README.md
-│
+├── assets/
+│   └── voxpilot-expansion-dashboard.png   # upload this screenshot
 ├── data/
-│   └── account_intelligence.json
-│
+│   ├── account_intelligence.json
+│   └── opportunity_intelligence.json
 └── sql/
     ├── voxpilot_setup.sql
     ├── voxpilot_data.sql
-    └── voxpilot_intelligence.sql
+    ├── voxpilot_intelligence.sql
+    ├── voxpilot_opportunities.sql          # add if not yet published
+    └── voxpilot_expansion_scenarios.sql    # add if not yet published
 ```
-
-### SQL Pipeline
-
-**1. voxpilot_setup.sql**
-
-Creates the Snowflake database and analytics schema.
-
-**2. voxpilot_data.sql**
-
-Creates synthetic customer, product usage, and account action records.
-
-**3. voxpilot_intelligence.sql**
-
-Calculates customer-level adoption and performance metrics, classifies account health, and produces account intelligence for commercial decision-making.
-
-The dashboard uses an exported JSON snapshot rather than a live Snowflake connection. It is therefore a static-data demonstration, not a real-time monitoring service.
-
-## Key Design Decisions
-
-**An intelligence layer, not another CRM**
-
-VoxPilot is designed to complement existing analytics, customer success, and CRM systems by connecting product signals to recommended account actions.
-
-**Technical signals linked to commercial context**
-
-API errors, latency, usage changes, and agent success are analysed alongside ARR and renewal timing.
-
-**Explainable rules**
-
-Account health and recommendations are generated through SQL-based rules rather than opaque AI predictions.
-
-**Actionable insights**
-
-The objective is not simply to display metrics but to help identify what a customer-facing team should investigate next.
-
-## Limitations & Future Development
-
-This is a proof-of-concept, not a production customer intelligence platform.
-
-Potential extensions include:
-
-- Automated ingestion of product telemetry and CRM data.
-- Channel-specific adoption and integration health analysis.
-- Trend-based alerts for emerging adoption and technical issues.
-- Opportunity scoring based on sustained usage and commercial eligibility.
-- CRM task creation and ownership tracking.
-- Measurement of interventions against subsequent adoption, retention, and expansion outcomes.
-
-## Why I Built This
-
-My experience in B2B SaaS customer success has shown me that account growth depends on understanding both the customer and how they use the product.
-
-Traditional account reviews often focus on adoption metrics, renewal dates, and customer sentiment separately. I wanted to explore how those signals could be brought together to identify technical friction earlier, prioritise interventions, and uncover commercially relevant opportunities.
-
-VoxPilot combines customer success, product analytics, SQL, and commercial account management in a practical portfolio prototype.
-
+SQL pipeline: `voxpilot_setup.sql` establishes the analytics environment; `voxpilot_data.sql` generates synthetic source data; `voxpilot_intelligence.sql` builds account-level health metrics; `voxpilot_opportunities.sql` classifies opportunity signals; and `voxpilot_expansion_scenarios.sql` defines hypothetical growth cases. The last two SQL files should be committed to the public repository if they currently exist only in Snowflake worksheets.
+Design decisions and limitations
+Explainable rules, not AI predictions: Classifications and recommendations are based on defined SQL logic.
+Commercial context with technical evidence: Usage and performance signals are considered alongside ARR and renewal timing.
+Current state versus scenarios: The project distinguishes observed signals from hypothetical opportunity assumptions.
+Synthetic and static: All records are fictional; the dashboard is a snapshot, not a monitoring or forecasting service.
+Not vendor-affiliated: This is an independent portfolio project and is not affiliated with ElevenLabs or another commercial AI platform.
+Why I built it
+My work in B2B SaaS customer success has reinforced the importance of connecting product adoption with commercial outcomes. I built VoxPilot to demonstrate how an account manager or technical customer success professional could use SQL and product telemetry to prioritise technical issues, protect adoption and make better-informed expansion discovery decisions.
 ---
-
-**Built as an independent portfolio project using synthetic data. Not affiliated with any commercial AI platform or vendor.**
+Launch the dashboard · Explore the repository
